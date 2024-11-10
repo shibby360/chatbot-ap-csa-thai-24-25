@@ -7,11 +7,12 @@ public class Javaswing {
     public static JPanel container = new JPanel();
     public static JButton currButton;
     public static JTextField currInput;
+    public static JScrollPane scrollPane;
     public static void main(String[] args) {
         f.add(container);
         container.add(addInputLine());
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(container);
+        scrollPane = new JScrollPane(container);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         f.add(scrollPane);
         f.setSize(400,500);//400 width and 500 height
@@ -45,6 +46,11 @@ public class Javaswing {
                 btn.setEnabled(false);
                 textField.setEditable(false);
                 currInput.requestFocus();
+                SwingUtilities.invokeLater(() -> {
+                    JScrollBar sb = scrollPane.getVerticalScrollBar();
+                    sb.setValue(sb.getMaximum());
+                });
+                update();
             }
         });
         textField.addKeyListener(new KeyAdapter() {
