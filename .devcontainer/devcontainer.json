@@ -9,5 +9,8 @@
       "label": "desktop"
     }
   },
+  "build":{
+    "noCache":true
+  },
   "postStartCommand":"git pull"
 }
