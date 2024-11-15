@@ -1,10 +1,10 @@
 public class Animal {
+    private String name = "";
+    private String exhibit = "";
     public Animal(String animalName, String animalExhibit) {
         name = animalName;
         exhibit = animalExhibit;
     }
-    private static String name = "";
-    private static String exhibit = "";
     public String getName() {
         return name;
     }

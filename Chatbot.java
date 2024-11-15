@@ -14,7 +14,6 @@ public class Chatbot {
         };
         boolean start = true;
         while (start == true) {
-            // return "Hello there, I am ZooBot! I can help with finding the animal exhibit of your choosing, the nearest bathroom, and provide contact information.";
             boolean recognized = false;
             for (String keyword : new String[] {"animals", "bathroom", "contact"}) {
                 if (strInput.toLowerCase().contains(keyword)) {
