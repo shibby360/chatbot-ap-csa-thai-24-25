@@ -19,7 +19,7 @@ public class Javaswing {
         f.setVisible(true);//making the frame visible
     }
     public static String doCommand(String cmd) {
-        return cmd;
+        return Chatbot.doCommand(cmd);
     }
     public static void addTextLine(String text) {
         JLabel label = new JLabel(text);
@@ -41,9 +41,15 @@ public class Javaswing {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addTextLine(doCommand(textField.getText()));
-                container.add(addInputLine());
-                btn.setEnabled(false);
+                if(textField.getText().toLowerCase().equals("stop")) {
+                    addTextLine("Stopped");
+                    btn.setEnabled(false);
+                    return;
+                } else {
+                    addTextLine(doCommand(textField.getText()));
+                    container.add(addInputLine());
+                    btn.setEnabled(false);
+                }
                 textField.setEditable(false);
                 currInput.requestFocus();
                 SwingUtilities.invokeLater(() -> {
