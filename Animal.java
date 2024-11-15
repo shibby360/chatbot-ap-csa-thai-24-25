@@ -1,5 +1,5 @@
 public class Animal {
-    public static void main(String animalName, String animalExhibit) {
+    public Animal(String animalName, String animalExhibit) {
         name = animalName;
         exhibit = animalExhibit;
     }

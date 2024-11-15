@@ -8,6 +8,7 @@ public class Javaswing {
     public static JButton currButton;
     public static JTextField currInput;
     public static JScrollPane scrollPane;
+    public static boolean running = true;
     public static void main(String[] args) {
         f.add(container);
         container.add(addInputLine());
@@ -19,7 +20,12 @@ public class Javaswing {
         f.setVisible(true);//making the frame visible
     }
     public static String doCommand(String cmd) {
-        return cmd;
+        if(cmd.equals("quit")) {
+            running = false;
+            return "";
+        }
+        return Chatbot.doCommand(cmd);
+        // return cmd;
     }
     public static void addTextLine(String text) {
         JLabel label = new JLabel(text);
@@ -41,7 +47,9 @@ public class Javaswing {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addTextLine(doCommand(textField.getText()));
+                if(running) {
+                    addTextLine(doCommand(textField.getText()));
+                }
                 container.add(addInputLine());
                 btn.setEnabled(false);
                 textField.setEditable(false);
