@@ -41,7 +41,8 @@ public class Chatbot {
             //     return "stop";
             // }
         }
-        return  "ok";
+        // inputs.close();
+        return strInput + " ok";
     }
 }
 

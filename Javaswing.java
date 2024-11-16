@@ -8,18 +8,25 @@ public class Javaswing {
     public static JButton currButton;
     public static JTextField currInput;
     public static JScrollPane scrollPane;
+    public static boolean running = true;
     public static void main(String[] args) {
+        addTextLine("Hello there, I am ZooBot! I can help with finding the animal exhibit of your choosing, the nearest bathroom, and provide contact information.");
         f.add(container);
         container.add(addInputLine());
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         scrollPane = new JScrollPane(container);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         f.add(scrollPane);
-        f.setSize(400,500);//400 width and 500 height
-        f.setVisible(true);//making the frame visible
+        f.setSize(400,500);
+        f.setVisible(true);
     }
     public static String doCommand(String cmd) {
+        if(cmd.equals("quit")) {
+            running = false;
+            return "";
+        }
         return Chatbot.doCommand(cmd);
+        // return cmd;
     }
     public static void addTextLine(String text) {
         JLabel label = new JLabel(text);
@@ -41,15 +48,11 @@ public class Javaswing {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(textField.getText().toLowerCase().equals("stop")) {
-                    addTextLine("Stopped");
-                    btn.setEnabled(false);
-                    return;
-                } else {
+                if(!textField.getText().equals("quit")) {
                     addTextLine(doCommand(textField.getText()));
                     container.add(addInputLine());
-                    btn.setEnabled(false);
                 }
+                btn.setEnabled(false);
                 textField.setEditable(false);
                 currInput.requestFocus();
                 SwingUtilities.invokeLater(() -> {
