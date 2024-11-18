@@ -17,16 +17,11 @@ public class Javaswing {
         scrollPane = new JScrollPane(container);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         f.add(scrollPane);
-        f.setSize(400,500);
+        f.setSize(700,700);
         f.setVisible(true);
     }
     public static String doCommand(String cmd) {
-        if(cmd.equals("quit")) {
-            running = false;
-            return "";
-        }
         return Chatbot.doCommand(cmd);
-        // return cmd;
     }
     public static void addTextLine(String text) {
         JLabel label = new JLabel(text);
@@ -48,9 +43,11 @@ public class Javaswing {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!textField.getText().equals("quit")) {
-                    addTextLine(doCommand(textField.getText()));
+                if(!textField.getText().equals("stop")) {
+                    addTextLine("<html>" + doCommand(textField.getText()).replaceAll("\n", "<br/>") + "</html>");
                     container.add(addInputLine());
+                } else {
+                    addTextLine("Goodbye!");
                 }
                 btn.setEnabled(false);
                 textField.setEditable(false);
