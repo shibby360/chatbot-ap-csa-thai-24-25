@@ -1,14 +1,18 @@
 public class Chatbot {
     public static boolean animal = false;
     public static boolean bathroom = false;
+    public static boolean contact = false;
     public static String doCommand(String strInput) {
+        boolean recognized = false;
         Animal panda = new Animal("panda", "e-5");
         Animal monkey = new Animal("monkey", "f-4");
         Animal lion = new Animal("lion", "d-3");
+        Animal bear = new Animal("bear", "g-3");
         Bathroom[] bathrooms = {
             new Bathroom("panda", "20N 50W"),
             new Bathroom("monkey", "10S 30E"),
-            new Bathroom("lion", "30N 10E")
+            new Bathroom("lion", "30N 10E"),
+            new Bathroom("bear", "20S 30W")
         };
         String[] messages = {
             "Sorry I don't know what you mean, I can answer anything about where the animals are, the nearest bathroom, or contact information. If not interested in any of these topics, type stop to quit.", 
@@ -20,13 +24,21 @@ public class Chatbot {
             Animal temp = null;
             if(lowerStr.contains("panda")) {
                 temp = panda;
+                recognized = true;
             } else if(lowerStr.contains("monkey")) {
                 temp = monkey;
+                recognized = true;
             } else if(lowerStr.contains("lion")) {
                 temp = lion;
+                recognized = true;
+            } else if(lowerStr.contains("bear")) {
+                temp = bear;
+                recognized = true;
             }
-            animal = false;
-            return "Exhibit " + temp.getExhibit() + "\n You can press stop to exit.";
+            if(recognized) { 
+                animal = false;
+                return "Exhibit " + temp.getExhibit() + "\n You can press stop to exit.";
+            }
         }
         if(bathroom == true) {
             bathroom = false;
@@ -38,10 +50,13 @@ public class Chatbot {
                 anim = "monkey";
             } else if(lowerStr.contains("lion")) {
                 anim = "lion";
+            } else if(lowerStr.contains("bear")) {
+                anim = "bear";
             } else {
                 String[] msgs = {
                     "Sorry, I couldn't understand. Closest to which exhibit?",
-                    "I didn't get what you were saying. Closest to the pandas, monkeys, or lion exhibit?"
+                    "I didn't get what you were saying. Closest to the pandas, monkeys, lions, or bear exhibit?",
+
                 };
                 bathroom = true;
                 return (msgs[(int)(Math.random() * msgs.length)]);
@@ -54,20 +69,31 @@ public class Chatbot {
             }
             return "The bathroom closest to the " + anim + " exhibit is " + temp.getDirection() + " away from there." + "\n You can press stop to exit.";
         }
+        if(contact == true) {
+            if(lowerStr.contains("email")) {
+                return "Our email is coolzoo@gmail.com";
+            } else if(lowerStr.contains("phone")) {
+                return "Our phone number is 925-325-2341";
+            } else if(lowerStr.contains("instagram")) {
+                return "Our instagram is shivankchhaya";
+            }
+        }
         if (lowerStr.contains("animal")) {
             animal = true;
-            return "What animals would you want to look at, Pandas, Monkeys, or Lions?";
+            return "What animals would you want to look at, Pandas, Monkeys, Lions, or Bears?";
         } else if(lowerStr.contains("bathroom")) {
             bathroom = true;
             return "Closest to which exhibit(pandas, monkeys, lions)?";
         } else if(lowerStr.contains("contact")) {
-            return "Our email is: coolzoo@gmail.com.\nOur phone number is 123-555-1234.";
+            contact = true;
+            return "Would you like our phone number, email, or instagram?";
         } else if(lowerStr.contains("thank")) {
             return "You're welcome! Feel free to ask about animals, bathrooms or contact info. If you aren't interested, press stop to quit.";
-        } else {
+        } 
+        if(!recognized) {
             return (messages[(int)(Math.random() * messages.length)]);
         }
-        // return strInput + " ok";
+        return (messages[(int)(Math.random() * messages.length)]);
     }
 }
 
