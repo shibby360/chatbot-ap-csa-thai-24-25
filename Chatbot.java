@@ -37,7 +37,7 @@ public class Chatbot {
             }
             if(recognized) { 
                 animal = false;
-                return "Exhibit " + temp.getExhibit() + "\n You can press stop to exit.";
+                return "Exhibit " + temp.getExhibit() + "\n You can press stop to exit or ask another question in the box below.";
             }
         }
         if(bathroom == true) {
@@ -67,15 +67,15 @@ public class Chatbot {
                     break;
                 }
             }
-            return "The bathroom closest to the " + anim + " exhibit is " + temp.getDirection() + " away from there." + "\n You can press stop to exit.";
+            return "The bathroom closest to the " + anim + " exhibit is " + temp.getDirection() + " away from there." + "\n You can press stop to exit or type another question in the box below.";
         }
         if(contact == true) {
             if(lowerStr.contains("email")) {
-                return "Our email is coolzoo@gmail.com";
+                return "Our email is coolzoo@gmail.com"  + "\n You can press stop to exit or type another question in the box below.";
             } else if(lowerStr.contains("phone")) {
-                return "Our phone number is 925-325-2341";
+                return "Our phone number is 925-325-2341"  + "\n You can press stop to exit or type another question in the box below.";
             } else if(lowerStr.contains("instagram")) {
-                return "Our instagram is shivankchhaya";
+                return "Our instagram is shivankchhaya"  + "\n You can press stop to exit or type another question in the box below.";
             }
         }
         if (lowerStr.contains("animal")) {

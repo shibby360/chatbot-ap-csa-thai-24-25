@@ -10,9 +10,9 @@ public class Javaswing {
     public static JScrollPane scrollPane;
     public static boolean running = true;
     public static void main(String[] args) {
-        addTextLine("Hello there, I am ZooBot! I can help with finding the animal exhibit of your choosing, the nearest bathroom, and provide contact information.\nAt any time, you can type stop to end the conversation.");
+        addTextLine("Hello there, I am ZooBot! I can help with finding the animal exhibit of your choosing, the nearest bathroom, and provide contact information.\nAt any time, you can type stop to end the conversation");
         f.add(container);
-        container.add(addInputLine());
+        container.add(addInputLine()); 
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         scrollPane = new JScrollPane(container);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
