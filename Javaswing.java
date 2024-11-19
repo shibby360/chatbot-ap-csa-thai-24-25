@@ -24,7 +24,7 @@ public class Javaswing {
         return Chatbot.doCommand(cmd);
     }
     public static void addTextLine(String text) {
-        JLabel label = new JLabel(text);
+        JLabel label = new JLabel("<html>" + text.replaceAll("\n","<br/>") + "</html>");
         container.add(label);
         container.add(Box.createVerticalStrut(40));
         update();
@@ -44,7 +44,7 @@ public class Javaswing {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!textField.getText().equals("stop")) {
-                    addTextLine("<html>" + doCommand(textField.getText()).replaceAll("\n", "<br/>") + "</html>");
+                    addTextLine(doCommand(textField.getText()));
                     container.add(addInputLine());
                 } else {
                     addTextLine("Goodbye!");

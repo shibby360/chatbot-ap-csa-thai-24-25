@@ -20,6 +20,7 @@ public class Chatbot {
             "Sorry, I am not sure I understand. I can assist with finding animals, locating the nearest restroom, or providing contact information. If not interested in any of these topics, type stop to quit."
         };
         String lowerStr = strInput.toLowerCase();
+        if((lowerStr.contains("panda") || lowerStr.contains("monkey") || lowerStr.contains("lion") || lowerStr.contains("bear")) && !bathroom) { animal = true; }
         if(animal == true) {
             Animal temp = null;
             if(lowerStr.contains("panda")) {
@@ -37,7 +38,7 @@ public class Chatbot {
             }
             if(recognized) { 
                 animal = false;
-                return "Exhibit " + temp.getExhibit() + "\n You can press stop to exit.";
+                return temp.getName().substring(0,1).toUpperCase() + temp.getName().substring(1) + "s are in in exhibit " + temp.getExhibit() + ".";
             }
         }
         if(bathroom == true) {
@@ -67,7 +68,7 @@ public class Chatbot {
                     break;
                 }
             }
-            return "The bathroom closest to the " + anim + " exhibit is " + temp.getDirection() + " away from there." + "\n You can press stop to exit.";
+            return "The bathroom closest to the " + anim + " exhibit is " + temp.getDirection() + " away from there.";
         }
         if(contact == true) {
             if(lowerStr.contains("email")) {
@@ -78,12 +79,12 @@ public class Chatbot {
                 return "Our instagram is shivankchhaya";
             }
         }
-        if (lowerStr.contains("animal")) {
+        if (lowerStr.contains("animal") || lowerStr.contains("exhibit")) {
             animal = true;
             return "What animals would you want to look at, Pandas, Monkeys, Lions, or Bears?";
         } else if(lowerStr.contains("bathroom")) {
             bathroom = true;
-            return "Closest to which exhibit(pandas, monkeys, lions)?";
+            return "Closest to which exhibit(pandas, monkeys, lions, bears)?";
         } else if(lowerStr.contains("contact")) {
             contact = true;
             return "Would you like our phone number, email, or instagram?";
@@ -91,6 +92,7 @@ public class Chatbot {
             return "You're welcome! Feel free to ask about animals, bathrooms or contact info. If you aren't interested, press stop to quit.";
         } 
         if(!recognized) {
+            recognized = false;
             return (messages[(int)(Math.random() * messages.length)]);
         }
         return (messages[(int)(Math.random() * messages.length)]);
