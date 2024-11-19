@@ -1,14 +1,14 @@
 public class Bathroom {
-    private static String exhibit = "";
-    private static String direction = "";
-    public static void main(String exhibitName, String direct) {
+    private String exhibit = "";
+    private String direction = "";
+    public Bathroom(String exhibitName, String direct) {
         exhibit = exhibitName;
         direction = direct;
     }
-    public static String getExhibit() {
+    public String getExhibit() {
         return exhibit;
     }
-    public static String getDirection() {
+    public String getDirection() {
         return direction;
     }
 }
