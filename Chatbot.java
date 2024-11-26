@@ -9,10 +9,10 @@ public class Chatbot {
         Animal lion = new Animal("lion", "d-3");
         Animal bear = new Animal("bear", "g-3");
         Bathroom[] bathrooms = {
-            new Bathroom("panda", "20N 50W"),
-            new Bathroom("monkey", "10S 30E"),
-            new Bathroom("lion", "30N 10E"),
-            new Bathroom("bear", "20S 30W")
+            new Bathroom("panda", "20 feet north"),
+            new Bathroom("monkey", "10 feet east"),
+            new Bathroom("lion", "30 feet west"),
+            new Bathroom("bear", "40 feet south")
         };
         String[] messages = {
             "Sorry I don't know what you mean, I can answer anything about where the animals are, the nearest bathroom, or contact information. If not interested in any of these topics, type stop to quit.", 
@@ -68,15 +68,15 @@ public class Chatbot {
                     break;
                 }
             }
-            return "The bathroom closest to the " + anim + " exhibit is " + temp.getDirection() + " away from there.";
+            return "The bathroom closest to the " + anim + " exhibit is " + temp.getDirection() + " from there.";
         }
         if(contact == true) {
             if(lowerStr.contains("email")) {
-                return "Our email is coolzoo@gmail.com";
+                return "Our email is supercoolzoo@gmail.com";
             } else if(lowerStr.contains("phone")) {
                 return "Our phone number is 925-325-2341";
             } else if(lowerStr.contains("instagram")) {
-                return "Our instagram is shivankchhaya";
+                return "Our instagram is supercoolzoo";
             }
         }
         if (lowerStr.contains("animal") || lowerStr.contains("exhibit")) {
