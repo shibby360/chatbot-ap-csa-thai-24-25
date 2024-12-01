@@ -63,7 +63,7 @@ public class Chatbot {
                 return (msgs[(int)(Math.random() * msgs.length)]);
             }
             for(Bathroom x : bathrooms) {
-                if(x.getExhibit() == anim) {
+                if(x.getExhibit().equals(anim)) {
                     temp = x;
                     break;
                 }
@@ -81,7 +81,7 @@ public class Chatbot {
         }
         if (lowerStr.contains("animal") || lowerStr.contains("exhibit")) {
             animal = true;
-            return "What animals would you want to look at, Pandas, Monkeys, Lions, or Bears?";
+            return "What animals would you want to look at, Pandas, Monkeys, Lions, or Bears(one at a time please)?";
         } else if(lowerStr.contains("bathroom")) {
             bathroom = true;
             return "Closest to which exhibit(pandas, monkeys, lions, bears)?";
