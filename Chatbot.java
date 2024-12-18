@@ -74,9 +74,9 @@ public class Chatbot {
             if(lowerStr.contains("email")) {
                 return "Our email is coolzoo@gmail.com \n You can press stop to exit or type another question in the box below.";
             } else if(lowerStr.contains("phone")) {
-                return "Our phone number is 925-325-2341 \n You can press stop to exit or type another question in the box below.";
+                return "Our phone number is 555-555-5555 \n You can press stop to exit or type another question in the box below.";
             } else if(lowerStr.contains("instagram")) {
-                return "Our instagram is shivankchhaya \n You can press stop to exit or type another question in the box below.";
+                return "Our instagram is coolzoo_official \n You can press stop to exit or type another question in the box below.";
             }
         }
         if (lowerStr.contains("animal") || lowerStr.contains("exhibit")) {
